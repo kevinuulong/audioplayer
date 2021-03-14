@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <script src="main.js"></script>
-    <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-  </body>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Audio Player</title>
+	<link rel="stylesheet" href="styles/css/main.css">
+</head>
+
+<body>
+	<div id="windowContent">
+		<div id="panel">
+			<img src="images/albumArt.svg" draggable="false" id="albumArt" />
+			<div id="container">
+				<div id="navbar">
+					<img id="minimize" draggable="false" src="images/icons/minimize.svg" />
+					<img id="close" draggable="false" src="images/icons/close.svg" />
+				</div>
+				<h1 id="trackName">Track title</h1>
+				<div class="break"></div>
+				<p id="artistName">Artist name</p>
+				<div id="controls">
+					<span id="prev" class="material-icons-round">skip_previous</span>
+					<span id="play" class="material-icons-round">play_arrow</span>
+					<span id="pause" class="material-icons-round">pause</span>
+					<span id="next" class="material-icons-round">skip_next</span>
+				</div>
+			</div>
+		</div>
+		<div id="bottom">
+			<div id="progress-bar">
+				<div id="slider-wrapper">
+					<div id="slider-bar"></div>
+				</div>
+				<div id="slider-thumb"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="main.js"></script>
+
 </html>

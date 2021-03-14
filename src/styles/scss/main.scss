@@ -1,0 +1,158 @@
+@import "size";
+@import "fonts";
+
+body,
+html {
+	font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, Helvetica, Arial, sans-serif;
+
+	margin: 0;
+	padding: 0;
+
+	user-select: none;
+	-webkit-app-region: drag;
+	overflow: hidden;
+}
+
+#windowContent {
+	margin: 0;
+	border-radius: $size;
+	background-color: #b2b2b2;
+	width: $size * 27;
+	height: $size * 11;
+	overflow: hidden;
+	position: relative;
+
+	color: #35353f;
+
+	h1,
+	p {
+		margin: 0;
+	}
+}
+
+#panel {
+	width: 100%;
+	height: $size * 8;
+	background-color: #d3d3d3;
+	border-radius: 0 0 $size $size;
+	overflow: hidden;
+}
+
+#albumArt {
+	width: $size * 8;
+	height: $size * 8;
+	background-color: #35353f;
+	border-radius: 0 $size $size 0;
+	display: inline-block;
+	// -webkit-app-region: drag;
+}
+
+#container {
+	display: inline-block;
+	padding: $size;
+	padding-top: $size * 1.5;
+	height: calc(100% - (#{$size} * 2.5));
+	width: calc(100% - (#{$size} * 11));
+	vertical-align: top;
+	position: relative;
+
+	h1 {
+		font-size: 25px;
+		line-height: 31px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		height: 31px;
+	}
+
+	p {
+		font-size: 20px;
+		line-height: 24px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		margin-top: $size / 4;
+		overflow: hidden;
+		height: 24px;
+	}
+}
+
+#navbar {
+	position: absolute;
+	right: -$size / 4;
+	top: $size / 2;
+	img {
+		width: $size;
+		padding-left: $size;
+		cursor: pointer;
+		-webkit-app-region: none;
+	}
+}
+
+#controls {
+	bottom: $size / 1.5;
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute;
+	margin: auto;
+
+	.material-icons-round {
+		font-size: $size * 2.25;
+		line-height: $size * 3;
+		vertical-align: middle;
+		cursor: pointer;
+		-webkit-app-region: none;
+	}
+
+	#play,
+	#pause {
+		font-size: $size * 3;
+	}
+
+	#pause {
+		display: none;
+	}
+}
+
+#bottom {
+	height: $size * 3;
+	width: 100%;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+}
+
+#progress-bar {
+	width: calc(100% - (#{$size} * 2));
+	height: $size / 2;
+	border-radius: $size / 2;
+	position: relative;
+    -webkit-app-region: none;
+}
+
+#slider-wrapper {
+	width: 100%;
+	height: $size / 2;
+	overflow: hidden;
+	border-radius: $size / 2;
+	background-color: #d3d3d3;
+}
+
+#slider-bar {
+	background-color: #35353f;
+	width: 100%;
+	height: 100%;
+	border-radius: $size / 2;
+	transform: translateX(-100%);
+}
+
+#slider-thumb {
+	width: $size;
+	height: $size;
+	border-radius: $size;
+	background-color: #35353f;
+	position: absolute;
+	left: 0;
+    top: -$size / 4;
+    cursor: pointer;
+}
