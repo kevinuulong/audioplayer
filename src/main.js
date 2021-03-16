@@ -69,7 +69,7 @@ window.onload = () => {
 		seek = false;
 		if (dragging || sound.playing() || seek) {
 			// console.log(dragging, seek, sound.playing());
-			let percent = (seekTo||sound.seek()) / sound.duration();
+			let percent = (seekTo || sound.seek()) / sound.duration();
 			document.querySelector('#slider-bar').style.transform = `translateX(-${100 - (percent * 100)}%)`;
 			document.querySelector('#slider-thumb').style.left = `${(percent * (document.querySelector('#slider-wrapper').getBoundingClientRect().right - document.querySelector('#slider-wrapper').getBoundingClientRect().left))}px`;
 			window.requestAnimationFrame(updateProgress);
@@ -96,6 +96,12 @@ window.onload = () => {
 	}
 
 	document.querySelector("#slider-thumb").addEventListener('mousedown', (e) => {
+		dragging = true;
+		updateProgress();
+		dragThumb(e);
+	})
+
+	document.querySelector("#slider-wrapper").addEventListener('mousedown', (e) => {
 		dragging = true;
 		updateProgress();
 		dragThumb(e);
