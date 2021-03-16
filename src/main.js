@@ -44,6 +44,11 @@ window.onload = () => {
 		document.querySelector("#play").style.display = "inline-block";
 	})
 
+	sound.on('end', () => {
+		document.querySelector("#pause").style.display = "none";
+		document.querySelector("#play").style.display = "inline-block";
+	})
+
 	// Previous
 	document.querySelector("#prev").addEventListener('click', () => {
 		if (sound.seek() >= 2) {
@@ -64,39 +69,44 @@ window.onload = () => {
 		seek = false;
 		if (dragging || sound.playing() || seek) {
 			// console.log(dragging, seek, sound.playing());
-			let percent = ((sound.seek() / sound.duration()) * 100);
-			document.querySelector('#slider-bar').style.transform = `translateX(-${100 - percent}%)`;
-			document.querySelector('#slider-thumb').style.left = `${percent - 1}%`;
+			let percent = (seekTo||sound.seek()) / sound.duration();
+			document.querySelector('#slider-bar').style.transform = `translateX(-${100 - (percent * 100)}%)`;
+			document.querySelector('#slider-thumb').style.left = `${(percent * (document.querySelector('#slider-wrapper').getBoundingClientRect().right - document.querySelector('#slider-wrapper').getBoundingClientRect().left))}px`;
 			window.requestAnimationFrame(updateProgress);
 		}
 	}
 
+	let seekTo;
 	let dragging = false;
 	function dragThumb(e) {
 		if (
 			dragging
-			&& e.pageX >= document.querySelector('#slider-wrapper').getBoundingClientRect().left
-			&& e.pageX <= document.querySelector('#slider-wrapper').getBoundingClientRect().right
+			&& e.pageX > document.querySelector('#slider-wrapper').getBoundingClientRect().left
+			&& e.pageX < document.querySelector('#slider-wrapper').getBoundingClientRect().right
 		) {
 			// document.querySelector('#slider-thumb').style.left = `${}px`;
 			// console.log(e.pageX, document.querySelector('#slider-wrapper').getBoundingClientRect().right)
-			let percent = (e.pageX - 25) / document.querySelector('#slider-wrapper').getBoundingClientRect().right;
+			// let percent = (e.pageX) / document.querySelector('#slider-wrapper').getBoundingClientRect().right;
+			let percent = ((e.pageX - document.querySelector('#slider-wrapper').getBoundingClientRect().left) / (document.querySelector('#slider-wrapper').getBoundingClientRect().right - document.querySelector('#slider-wrapper').getBoundingClientRect().left));
 			// console.log(percent, sound.duration(), percent * sound.duration());
-			sound.seek(percent * sound.duration());
+			// sound.seek(percent * sound.duration());
+			seekTo = percent * sound.duration();
 			window.requestAnimationFrame(dragThumb)
 		}
 	}
 
 	document.querySelector("#slider-thumb").addEventListener('mousedown', (e) => {
 		dragging = true;
-		// updateProgress();
+		updateProgress();
 		dragThumb(e);
 	})
 
 	document.addEventListener('mouseup', () => {
 		if (dragging) {
+			sound.seek(seekTo);
+			seekTo = false;
 			dragging = false;
-			
+
 		}
 	})
 

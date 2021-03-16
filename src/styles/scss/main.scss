@@ -127,7 +127,7 @@ html {
 	height: $size / 2;
 	border-radius: $size / 2;
 	position: relative;
-    -webkit-app-region: none;
+	-webkit-app-region: none;
 }
 
 #slider-wrapper {
@@ -153,6 +153,7 @@ html {
 	background-color: #35353f;
 	position: absolute;
 	left: 0;
-    top: -$size / 4;
-    cursor: pointer;
+	top: -$size / 4;
+	cursor: pointer;
+	transform: translateX(-$size / 2);
 }

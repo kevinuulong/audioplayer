@@ -160,5 +160,7 @@ html {
   left: 0;
   top: -6.25px;
   cursor: pointer;
+  -webkit-transform: translateX(-12.5px);
+          transform: translateX(-12.5px);
 }
 /*# sourceMappingURL=main.css.map */
