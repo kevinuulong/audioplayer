@@ -1,7 +1,7 @@
-const { app, BrowserWindow } = require('electron');
-const { Howler, Howl } = require('howler');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const path = require('path');
 
-require('electron-reload')(__dirname);
+// require('electron-reload')(__dirname);
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
 	app.quit();
@@ -38,6 +38,16 @@ const createWindow = () => {
 		mainWindow = null;
 	});
 };
+
+ipcMain.on('get-src', () => {
+	let src = process.argv[1];
+	if(path.basename(src) != src || src === "." || src === "..") fromFile();
+	mainWindow.webContents.send('from-args', src);
+})
+
+function fromFile() {
+	mainWindow.webContents.send('from-file', dialog.showOpenDialogSync({ properties: ['openFile'] }));
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

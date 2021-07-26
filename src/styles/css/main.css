@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap&family=Material+Icons+Round");
+@import url("../../fonts/Montserrat-Regular.ttf");
+@import url("../../fonts/Montserrat-SemiBold.ttf");
 body,
 html {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -96,16 +97,17 @@ html {
 }
 
 #controls .material-icons-round {
-  font-size: 56.25px;
+  width: 56.25px;
   line-height: 75px;
   vertical-align: middle;
   cursor: pointer;
   -webkit-app-region: none;
+  -webkit-user-drag: none;
 }
 
 #controls #play,
 #controls #pause {
-  font-size: 75px;
+  width: 75px;
 }
 
 #controls #pause {

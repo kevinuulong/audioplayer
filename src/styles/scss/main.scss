@@ -97,16 +97,17 @@ html {
 	margin: auto;
 
 	.material-icons-round {
-		font-size: $size * 2.25;
+		width: $size * 2.25;
 		line-height: $size * 3;
 		vertical-align: middle;
 		cursor: pointer;
 		-webkit-app-region: none;
+		-webkit-user-drag: none;
 	}
 
 	#play,
 	#pause {
-		font-size: $size * 3;
+		width: $size * 3;
 	}
 
 	#pause {
