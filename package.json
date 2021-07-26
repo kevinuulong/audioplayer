@@ -1,15 +1,16 @@
 {
 	"name": "audioplayer",
 	"productName": "audioplayer",
-	"version": "1.0.3",
-	"description": "My Electron application description",
+	"version": "1.0.4",
+	"description": "Basic Desktop audio player using Electron",
 	"main": "src/index.js",
 	"scripts": {
-		"start": "electron-forge start",
-		"package": "electron-forge package",
-		"make": "electron-forge make",
-		"publish": "electron-forge publish",
-		"lint": "echo \"No linting configured\""
+		"postinstall": "electron-builder install-app-deps",
+		"test": "echo \"Error: no test specified\" && exit 0",
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder --linux --windows",
+		"build": "electron-builder build -w"
 	},
 	"keywords": [],
 	"author": {
@@ -17,45 +18,30 @@
 		"email": "kevin.uu.long@gmail.com"
 	},
 	"license": "MIT",
-	"config": {
-		"forge": {
-			"packagerConfig": {},
-			"makers": [
-				{
-					"name": "@electron-forge/maker-squirrel",
-					"config": {
-						"name": "audioplayer"
-					}
-				},
-				{
-					"name": "@electron-forge/maker-zip",
-					"platforms": [
-						"darwin"
-					]
-				},
-				{
-					"name": "@electron-forge/maker-deb",
-					"config": {}
-				},
-				{
-					"name": "@electron-forge/maker-rpm",
-					"config": {}
-				}
-			]
-		}
+	"build": {
+		"appId": "com.kevinuulong.audioplayer",
+		"fileAssociations": [
+			{
+				"ext": "mp3"
+			},
+			{
+				"ext": "wav"
+			},
+			{
+				"ext": "ogg"
+			},
+			{
+				"ext": "m4a"
+			}
+		]
 	},
 	"dependencies": {
-		"electron-squirrel-startup": "^1.0.0",
 		"howler": "^2.1.2",
 		"music-metadata": "^7.8.1"
 	},
 	"devDependencies": {
-		"@electron-forge/cli": "^6.0.0-beta.54",
-		"@electron-forge/maker-deb": "^6.0.0-beta.54",
-		"@electron-forge/maker-rpm": "^6.0.0-beta.54",
-		"@electron-forge/maker-squirrel": "^6.0.0-beta.54",
-		"@electron-forge/maker-zip": "^6.0.0-beta.54",
 		"electron": "9.4.0",
+		"electron-builder": "^22.11.7",
 		"electron-reload": "^1.5.0"
 	}
 }
