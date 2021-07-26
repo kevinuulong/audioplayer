@@ -41,7 +41,7 @@ const createWindow = () => {
 
 ipcMain.on('get-src', () => {
 	let src = process.argv[1];
-	if(path.basename(src) != src || src === "." || src === "..") fromFile();
+	if(typeof(src) != "string" || path.resolve(src) != src || src === "." || src === "..") fromFile();
 	mainWindow.webContents.send('from-args', src);
 })
 
