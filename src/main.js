@@ -27,6 +27,9 @@ window.onload = () => {
 				document.querySelector("#trackName").textContent = common.title;
 				document.querySelector("#artistName").textContent = common.artists.toString().replace(/(.),(.)/gm, '$1, $2');
 				document.querySelector("#albumArt").src = `data:${common.picture[0].format};base64,${common.picture[0].data.toString('base64')}`;
+				// Dynamic icon changing, currently disabled
+				// ipcRenderer.send('change-icon', `data:${common.picture[0].format};base64,${common.picture[0].data.toString('base64')}`);
+				document.title = `${common.title} - ${common.artists.toString().replace(/(.),(.)/gm, '$1, $2')}`;
 			} catch (error) {
 				// NOTE: This line ends up spitting out the following:
 				// 'EINVAL: invalid argument, read'

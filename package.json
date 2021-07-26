@@ -1,7 +1,7 @@
 {
 	"name": "audioplayer",
-	"productName": "audioplayer",
-	"version": "1.0.4",
+	"productName": "Audio Player",
+	"version": "1.0.5",
 	"description": "Basic Desktop audio player using Electron",
 	"main": "src/index.js",
 	"scripts": {
@@ -9,7 +9,7 @@
 		"test": "echo \"Error: no test specified\" && exit 0",
 		"start": "electron .",
 		"pack": "electron-builder --dir",
-		"dist": "electron-builder --linux --windows",
+		"dist": "electron-builder --windows",
 		"build": "electron-builder build -w"
 	},
 	"keywords": [],
@@ -33,7 +33,8 @@
 			{
 				"ext": "m4a"
 			}
-		]
+		],
+		"files": ["!music/*", "!dist/*"]
 	},
 	"dependencies": {
 		"howler": "^2.1.2",

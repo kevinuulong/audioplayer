@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, nativeImage } = require('electron');
 const path = require('path');
 
 // require('electron-reload')(__dirname);
@@ -34,6 +34,13 @@ const createWindow = () => {
 		mainWindow = null;
 	});
 };
+
+// This feature is currently disabled
+// may be re-enabled through a user preference at a later date
+ipcMain.on('change-icon', (event, data) => {
+	let image = nativeImage.createFromDataURL(data);
+	mainWindow.setIcon(image);
+})
 
 ipcMain.on('get-src', () => {
 	let src = process.argv[1];
