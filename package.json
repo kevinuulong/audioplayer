@@ -41,7 +41,7 @@
 		"music-metadata": "^7.8.1"
 	},
 	"devDependencies": {
-		"electron": "9.4.0",
+		"electron": "11.5.0",
 		"electron-builder": "^22.11.7",
 		"electron-reload": "^1.5.0"
 	}
