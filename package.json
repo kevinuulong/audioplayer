@@ -37,7 +37,7 @@
 		"files": ["!music/*", "!dist/*"]
 	},
 	"dependencies": {
-		"howler": "^2.1.2",
+		"howler": "^2.2.3",
 		"music-metadata": "^7.8.1"
 	},
 	"devDependencies": {
